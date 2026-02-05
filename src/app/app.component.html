@@ -1,24 +1,19 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <style>
     :host {
         --bright-blue: oklch(51.01% 0.274 263.83);
+        --light-blue: oklch(47.466% 0.07931 268.181);
         --electric-violet: oklch(53.18% 0.28 296.97);
         --french-violet: oklch(47.66% 0.246 305.88);
         --vivid-pink: oklch(69.02% 0.277 332.77);
+        --nice-pink: oklch(72.955% 0.19366 331.262);
         --hot-red: oklch(61.42% 0.238 15.34);
         --orange-red: oklch(63.32% 0.24 31.68);
 
         --gray-900: oklch(19.37% 0.006 300.98);
         --gray-700: oklch(36.98% 0.014 302.71);
         --gray-400: oklch(70.9% 0.015 304.04);
+        --gray-200: oklch(100% 0.00011 271.152);
 
         --red-to-pink-to-purple-vertical-gradient: linear-gradient(180deg,
                 var(--orange-red) 0%,
@@ -102,7 +97,9 @@
         justify-content: center;
         align-items: center;
         margin-top: 20px;
-        background-color: #f0f0f0;
+        background-color: var(--gray-200);
+        border-color: var(--nice-pink);
+        border-radius: 8px;
         overflow: hidden;
     }
 
@@ -113,9 +110,32 @@
     }
 
     .error-message {
-        color: red;
+        color: var(--orange-red);
     }
 
+    .extract-btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: var(--nice-pink);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .extract-btn:hover {
+        background-color: var(--light-blue);
+    }
+
+    .extracted-text {
+        margin: 6px 0;
+        height: 80px;
+        border-radius: 8px;
+        border: none;
+        background-color: var(--gray-200);
+    }
 
     @media screen and (max-width: 650px) {
         .content {
@@ -123,12 +143,6 @@
             width: max-content;
         }
 
-        .divider {
-            height: 1px;
-            width: 100%;
-            background: var(--red-to-pink-to-purple-horizontal-gradient);
-            margin-block: 1.5rem;
-        }
     }
 </style>
 
@@ -146,16 +160,9 @@
             @if(previewUrl){ <img [src]="previewUrl" alt="Preview of selected image">}
             @if(errorMessage){ <div class="error-message">{{ errorMessage }}</div>}
         </div>
+        <button class="extract-btn" (click)="extractText()">Extract text</button>
+        <textarea [value]="extractedText" class="extracted-text" readonly></textarea>
     </div>
 </main>
-
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 
 <router-outlet />
