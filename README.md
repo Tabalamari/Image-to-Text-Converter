@@ -1,5 +1,9 @@
 # ImageToTextConverter
 
+## Description: 
+
+A web application built with Angular that uses a public API (e.g., API Ninjas) to extract text from user-uploaded images (JPEG/PNG, up to 2 MB). The app includes image preview, displays extracted text, and allows copying the result to the clipboard.
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.19.
 
 ## Development server
